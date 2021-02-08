@@ -32,34 +32,20 @@ Eina_Bool update_watch_hands(void *data)
 	time_t now;
 	watch_time_get_utc_timestamp(watch_time, &now);
 
-<<<<<<< HEAD
-	struct tm *ptm = localtime(&now);
-	min = ptm->tm_min;
-	hour = ptm->tm_hour;
-=======
  	struct tm *ptm = localtime(&now);
  	min = ptm->tm_min;
  	hour = ptm->tm_hour;
->>>>>>> b7b0714 (Initial)
 
 	watch_time_get_second(watch_time, &sec);
 	watch_time_get_millisecond(watch_time, &msec);
 
 	watch_time_delete(watch_time);
 
-<<<<<<< HEAD
 	degree = sec * 1.025 * 6;
 	degree += msec * 6 / 1000.0;
 	if(sec + msec/1000.0 > 58.5) {
 		degree = 0;
 	}
-=======
-    degree = sec * 1.025 * 6;
-    degree += msec * 6 / 1000.0;
-    if(sec + msec/1000.0 > 58.5) {
-            degree = 0;
-    }
->>>>>>> b7b0714 (Initial)
 
 	int x, y, w, h;
 	evas_object_geometry_get(ad->second_hand, &x, &y, &w, &h);
@@ -70,13 +56,8 @@ Eina_Bool update_watch_hands(void *data)
 	evas_object_map_enable_set(ad->second_hand, EINA_TRUE);
 	evas_map_free(map);
 
-<<<<<<< HEAD
 	degree = min * 6;
 	degree += sec * 6 / 60.0;
-=======
-    degree = min * 6;
-    degree += sec * 6 / 60.0;
->>>>>>> b7b0714 (Initial)
 
 	evas_object_geometry_get(ad->minute_hand, &x, &y, &w, &h);
 	map = evas_map_new(4);
@@ -233,15 +214,9 @@ main(int argc, char *argv[])
 	event_callback.ambient_changed = app_ambient_changed;
 
 	watch_app_add_event_handler(&handlers[APP_EVENT_LANGUAGE_CHANGED],
-<<<<<<< HEAD
 			APP_EVENT_LANGUAGE_CHANGED, watch_app_lang_changed, &ad);
 	watch_app_add_event_handler(&handlers[APP_EVENT_REGION_FORMAT_CHANGED],
 			APP_EVENT_REGION_FORMAT_CHANGED, watch_app_region_changed, &ad);
-=======
-		APP_EVENT_LANGUAGE_CHANGED, watch_app_lang_changed, &ad);
-	watch_app_add_event_handler(&handlers[APP_EVENT_REGION_FORMAT_CHANGED],
-		APP_EVENT_REGION_FORMAT_CHANGED, watch_app_region_changed, &ad);
->>>>>>> b7b0714 (Initial)
 
 	ret = watch_app_main(argc, argv, &event_callback, &ad);
 	if (ret != APP_ERROR_NONE) {
